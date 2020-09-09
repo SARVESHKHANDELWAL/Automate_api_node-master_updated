@@ -1,0 +1,1599 @@
+swagger: '2.0'
+info:
+  description: This is a swagger editor for documentation of Rest API's.
+  version: 1.0.0
+  title: Swagger Documentation Editor
+host: localhost:3000
+basePath: /
+tags:
+  
+  - name: user
+    description: user Module
+  - name: farm
+    description: farm Module
+  
+schemes:
+  - http
+  - https
+  
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+  
+paths:
+ 
+  /android_user/user_mobileregister:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: to register by mobile and password and token is generated
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: mobile
+          in: formData
+          description: mobile
+          required: true
+          type: integer
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+        - name: name
+          in: formData
+          description: name
+          required: true
+          type: string
+
+         
+        - name: u_id
+          in: formData
+          description: u_id
+          required: false
+          type: string 
+        - name: country_code
+          in: formData
+          description: country_code
+          required: false
+          type: string 
+          
+            
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      
+       
+
+  /android_user/user_emailregister:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: to register by email and password and token is generated
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+
+        - name: email
+          in: formData
+          description: email
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+        - name: name
+          in: formData
+          description: name
+          required: true
+          type: string
+
+        - name: u_id
+          in: formData
+          description: u_id
+          required: false
+          type: string
+        - name: country_code
+          in: formData
+          description: country_code
+          required: false
+          type: string 
+        
+          
+        
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      
+            
+  /android_user/user_loginemail:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: to login by email and password and token is updated
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: email
+          in: formData
+          description: email
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+       
+        
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      
+  /android_user/user_loginmobile:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: to login by mobile and password and token is updated
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: mobile
+          in: formData
+          description: mobile
+          required: true
+          type: integer
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+       
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      
+  /android_user/user_loginadmin:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: for admin login by email and password and token is updated
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: email
+          in: formData
+          description: email
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      
+  /android_user/loginbyu_id:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: to login by u_id if u_id is already exist then token is 
+                    updated and if u_id is not registered then it will get 
+                    registered and token is generated
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: u_id
+          in: formData
+          description: u_id
+          required: true
+          type: string
+        - name: email
+          in: formData
+          description: email
+          required: true
+          type: string
+        - name: name
+          in: formData
+          description: name
+          required: false
+          type: string  
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      
+  /android_user/addDelegateUser:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: to add delegate user
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: mobile
+          in: formData
+          description: mobile
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      
+  /android_user/fetchUserProfile:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: get the profile of user
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_user/update_profile_image:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: to insert the profileImage in table user
+      consumes:
+        - multipart/form-data
+        - application/x-www-form-urlencoded
+      produces:
+        -  application/json
+      
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - in: formData
+          name: profileImage
+          type: file
+          description: profileImage
+          required: true
+          
+          
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_user/updateUserProfile:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: to update the profile of user  in table user
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: name
+          in: formData
+          description: name
+          required: true
+          type: string
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_user/resetPassword:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: reset password
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+       
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []  
+  /android_user/checkOldpassword:
+    post:
+      tags:
+        - user
+      summary: user panel
+      description: Check old password
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+       
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []           
+  /android_farm/addFarms:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to add farms in table farm by userId,name,area andnoOfPlot and accordingly insert area,name in table                  farmPlot by farmId which is generated by table farm
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: name
+          in: formData
+          description: name
+          required: true
+          type: string
+        - name: area
+          in: formData
+          description: area
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/addPlot:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to add plots in table farmPlot by farmId,name,area 
+                   and accordingly update noOfplots  in table farm by farmId
+
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: name
+          in: formData
+          description: name
+          required: false
+          type: string
+        - name: area
+          in: formData
+          description: area
+          required: false
+          type: integer
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+        - name: noOfPlots
+          in: formData
+          description: noOfPlots
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/fetchFarm:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: get details of farm by providing userId
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+            
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/getFarmPlots:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to get the details of plot from table farmPlot
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+            
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/updatePlotArea:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: update the area in table farmPlot by using id
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: id
+          in: formData
+          description: id
+          required: true
+          type: integer
+        - name: area
+          in: formData
+          description: area
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/getDeviceName:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: get the data or device by farmId in table              deviceNameMaster
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+       
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/addDeviceName:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: add deviceName in table deviceNameMaster
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+       
+        - name: externalName
+          in: formData
+          description: externalName
+          required: true
+          type: string
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+        - name: addedBy
+          in: formData
+          description: addedBy
+          required: false
+          type: integer
+       
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+            
+  /android_farm/addDevice:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: add device in table deviceMaster
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+       
+        - name: number
+          in: formData
+          description: number
+          required: true
+          type: integer
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+        - name: typId
+          in: formData
+          description: typId
+          required: false
+          type: integer
+        - name: mfgDate
+          in: formData
+          description: mfgDate
+          required: false
+          type: string
+        - name: renewalDate
+          in: formData
+          description: renewalDate
+          required: false
+          type: string
+  
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+            
+  /android_farm/addPlotDevice:
+    post:
+      tags:
+        - farm
+      summary: farmpanel
+      description: to insert plot Device in table plotDevice 
+                    and accordingly update data in table deviceMaster 
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+       
+        - name: number
+          in: formData
+          description: number
+          required: true
+          type: integer
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+        - name: deviceNameMstrId
+          in: formData
+          description: deviceNameMstrId
+          required: true
+          type: integer
+        - name: plotId
+          in: formData
+          description: plotId
+          required: true
+          type: integer
+            
+      responses:
+        '200':
+          description: Success
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/addFarmDevice:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to insert farm Device in table plotDevice 
+                   and accordingly update data in table deviceMaster 
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+       
+        - name: number
+          in: formData
+          description: number
+          required: true
+          type: integer
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+        - name: deviceNameMstrId
+          in: formData
+          description: deviceNameMstrId
+          required: true
+          type: integer
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  
+  /android_farm/getPlotDevices:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: get plot devices from table plotDevice by joining it with table deviceNameMaster
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: plotId
+          in: formData
+          description: plotId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/getFarmDevices:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: get farm devices from table plotDevice
+                   by joining it with table deviceNameMaster
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+       
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/getFarmPlotDevices:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: get farm plots in table farmPlot by farmId and
+                   joining this with table plotDevice and accordingly
+                   get data by plotId
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+       
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/getDevice:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: Returns a json array
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/updatePlotDevice:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to Update in plotdevice
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+       
+        - name: number
+          in: formData
+          description: number
+          required: true
+          type: integer
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+        
+        
+        - name: plotDeviceNum
+          in: formData
+          description: plotDeviceNum
+          required: true
+          type: integer
+        - name: plotId
+          in: formData
+          description: plotId
+          required: true
+          type: integer
+        - name: deviceNameMstrId
+          in: formData
+          description: deviceNameMstrId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/updateFarmDevice:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to Update in farmdevice
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+       
+        - name: number
+          in: formData
+          description: number
+          required: true
+          type: integer
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+        - name: plotDeviceNum
+          in: formData
+          description: plotDeviceNum
+          required: true
+          type: integer
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+        - name: deviceNameMstrId
+          in: formData
+          description: deviceNameMstrId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+            
+  /android_farm/getNameMappingOfPlot:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to get all plot list from table plotDevice
+                   by plotId and joining this with
+                   deviceMaster and deviceNameMaster
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: plotId
+          in: formData
+          description: plotId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/getNameMappingOfFarm:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to get all farm list from table plotDevice
+                   by farmId and joining this with
+                   deviceMaster and deviceNameMaster
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+            
+  /android_farm/schedulingOfDevices:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: for scheduling of device in table deviceSchedule
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: addedBy
+          in: formData
+          description: addedBy
+          required: true
+          type: string
+        - name: dispenseQty
+          in: formData
+          description: dispenseQty
+          required: true
+          type: string
+        - name: dispenseRate
+          in: formData
+          description: dispenseRate
+          required: true
+          type: string
+        - name: plotDeviceNum
+          in: formData
+          description: plotDeviceNum
+          required: true
+          type: integer
+       
+        - name: operationTimestamp[]
+          in: formData
+          description: operationTimestamp
+          required: true
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/pastDeviceSchedule:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to get all the past schedule from current
+                     time by userId from table plotDevice,farm,
+                    farmPlot,deviceNameMaster,deviceSchedule
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/futureDeviceSchedule:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to get all the future schedule from current
+                   time by userId from table plotDevice,farm
+                  ,deviceNameMaster,deviceSchedule
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/pastDeviceScheduleByPlotDeviceNum:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to get past schedule by plotDeviceNum
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: plotDeviceNum
+          in: formData
+          description: plotDeviceNum
+          required: true
+          type: integer
+  
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/futureDeviceScheduleByPlotDeviceNum:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to get future schedule by plotDeviceNum
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: plotDeviceNum
+          in: formData
+          description: plotDeviceNum
+          required: true
+          type: integer
+  
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+            
+  /android_farm/getDeviceState:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to get the device state
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: deviceId
+          in: formData
+          description: deviceId
+          required: true
+          type: integer
+  
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/emergencyStop:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to insert a row in table deviceSchedule for emergency               stop
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: plotDeviceNum
+          in: formData
+          description: plotDeviceNum
+          required: true
+          type: integer
+  
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/updateDeviceSchedule:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: update in table deviceSchedule by using id and                      plotDeviceNum
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: dispenseQty
+          in: formData
+          description: dispenseQty
+          required: true
+          type: string
+        - name: dispenseRate
+          in: formData
+          description: dispenseRate
+          required: true
+          type: string
+        - name: id
+          in: formData
+          description: id
+          required: true
+          type: string
+        - name: plotDeviceNum
+          in: formData
+          description: plotDeviceNum
+          required: true
+          type: integer
+       
+        - name: operationTimestamp
+          in: formData
+          description: operationTimestamp
+          required: true
+          type: string
+          
+  
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/emergencyStopOfAllPlotsFarmsDeviceOfFarm:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to stop all plot devices of a farm  and farm device of             farm
+
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: farmId
+          in: formData
+          description: farmId
+          required: true
+          type: integer
+       
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/emergencyStopOfPlotsOfUser:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to stop all plot devices 
+
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        - name: farmId
+          in: formData
+          description: farmId
+          required: false
+          type: integer
+        - name: plotId
+          in: formData
+          description: plotId
+          required: true
+          type: integer
+       
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+  /android_farm/emergencyStopOfUser:
+    post:
+      tags:
+        - farm
+      summary: farm panel
+      description: to stop all plotDevies and farmDevices of an user
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+      
+        - name: userId
+          in: formData
+          description: userId
+          required: true
+          type: integer
+        - name: android_token
+          in: formData
+          description: android_token
+          required: true
+          type: string
+        
+      responses:
+        '200':
+          description: valid input
+        '405':
+          description: Invalid input
+      security:
+        - Bearer: []
+
+

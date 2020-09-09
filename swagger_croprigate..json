@@ -1,0 +1,105 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Farm management web app",
+    "version": "1.0.0",
+    "title": "Croptrails"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/android_user",
+  "tags": [
+    {
+      "name": "API"
+    }
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/user_loginemail": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "get authentication to access api",
+        "description": "",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+       },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/fetchFarmData": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "API"
+        ],
+        "summary": "get farm and product details",
+        "description": "",
+        "operationId": "varifyExpendeture",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  }
+  }
+  
